@@ -1,0 +1,16 @@
+// login.Data 参数类型
+export interface LoginData {
+  pageName: string,
+  loginData: any,
+  loginRules: any
+}
+
+// VUEX login.State 参数类型
+export interface LoginState {
+  info?: any
+  token: string
+}
+
+// GET_DATA_ASYN 接口参数类型
+// export interface DataOptions {}
+

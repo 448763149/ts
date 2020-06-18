@@ -1,0 +1,99 @@
+@import "@/assets/scss/variables.scss";
+
+.login-wrap {
+  width: 100%;
+}
+
+.page-login-container{
+  background-image: url('../../assets/images/loginbg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-top: 62px;
+  height: 520px;
+  .qw-loginbox{
+     width: 380px;
+     background-color: #fff;
+     float: right;
+     .qw-login-h2{
+        color: #333;
+        font-size: 22px;
+        text-align: center;
+        line-height: 30px;
+        padding: 15px;
+        border-bottom: 1px solid #E6E6E6;;
+     }
+     
+     /deep/ .qw-login-form{
+       padding: 30px;
+       .ivu-input-large{
+         height: 42px;
+         padding-left: 50px;
+         border-radius: 0;
+         border-color: #D9D9D9;
+         &:hover{
+           border-color: #53adf1;
+         }
+       }
+       .ivu-btn-primary{
+         background-color: #3A8AF3;
+         border-color: #3A8AF3;
+         height: 42px;
+         &:hover{
+           background-color: #53adf1;
+           border-color: #53adf1;
+         }
+       }
+       .ivu-input-wrapper-large .ivu-input-prefix i{
+         line-height: 42px;
+         height: 42px;
+         padding: 0 13px;
+         position: relative;
+         &::after{
+           content: " ";
+           width: 1px;
+           background-color: #D9D9D9;
+           position: absolute;
+           top: 13px;
+           bottom: 13px;
+           right: 3px;
+         }
+       }
+     }
+     /deep/ .ivu-login{
+       padding: 30px;
+       .ivu-input-large{
+         height: 42px;
+         padding-left: 50px;
+         border-radius: 0;
+         border-color: #D9D9D9;
+         &:hover{
+           border-color: #53adf1;
+         }
+       }
+       .ivu-btn-primary{
+         background-color: #3A8AF3;
+         border-color: #3A8AF3;
+         height: 42px;
+         &:hover{
+           background-color: #53adf1;
+           border-color: #53adf1;
+         }
+       }
+       .ivu-input-wrapper-large .ivu-input-prefix i{
+         line-height: 42px;
+         padding: 0 13px;
+         position: relative;
+         &::after{
+           content: " ";
+           width: 1px;
+           background-color: #D9D9D9;
+           position: absolute;
+           top: 13px;
+           bottom: 13px;
+           right: 3px;
+         }
+       }
+     }
+  }
+}
+

@@ -1,0 +1,29 @@
+@import "@/assets/scss/variables.scss";
+
+.index-wrap {
+  width: 100%;
+  height: 100%;
+}
+.qw-layout{
+  overflow: hidden;
+  zoom: 1;
+}
+
+.qw-layout-sider{
+  position: fixed;
+  transition: all .2s ease-in-out;
+  left: 0px;
+  top: 0px;
+  bottom: 0;
+  width: 220px;
+  min-width: 110px;
+  min-height: 100%;
+  box-shadow: 2px 0 8px 0 rgba(29,35,41,.05);
+}
+.qw-layout-inside{
+  min-height: calc(100vh - 64px);
+  width: 100%;
+  padding-left: 220px;
+  background: #f5f7f9;
+}
+
