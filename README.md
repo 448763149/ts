@@ -48,8 +48,12 @@ cnpm run tep login
 cnpm run com test
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 初始登录账号密码
+```
+账号：admin
+密码：admin
+```
 
-#### 本文地址
-https://www.jianshu.com/p/44500385abdd
+
+
+
