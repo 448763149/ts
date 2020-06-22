@@ -4,9 +4,10 @@ import { IndexData } from '@/types/views/mian.interface'
 import { setToken } from '@/utils/common'
 import modules from "@/components" // 组件
 
+
 @Component({
   components: {
-    qwMenu: modules.qwMenu
+    qwMenu: modules.QwMenu
   }
 })
 export default class About extends Vue {

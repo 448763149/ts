@@ -31,13 +31,15 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { Getter, Action } from "vuex-class";
 import qwSidemenu from "../qwSidemenu/qwSidemenu.vue"; // 组件
-import { NavigationData } from "@/types/components/Navigation.interface";
+import { NavigationData } from "@/types/components/qwMenu.interface.ts";
 @Component({
-   components: {
-      QwSidemenu: qwSidemenu
-   }
+  components: {
+    QwSidemenu: qwSidemenu
+  }
 })
-export default class qwMenu extends Vue {
+export default class QwMenu extends Vue {
+  // 全局声明一下不然活报红警告
+  $router
   @Getter("admin/login/info") info;
   @Getter("admin/login/childrenMenu") childrenMenu;
   @Getter("admin/login/menutitle") menutitle;
@@ -47,13 +49,13 @@ export default class qwMenu extends Vue {
     required: false,
     default: ""
   })name!: string;
-  //全局声明一下不然活报红警告
-  private $router
+  
   // data
   data: NavigationData = {
     componentName: "Navigation",
     MenuList: [],
     title: '',
+    childrenMenu: []
   };
   // 访问父级方法设置导航
   private parent: any = this.$parent;
@@ -70,15 +72,15 @@ export default class qwMenu extends Vue {
     this.data.MenuList = this.info.userMenuList;
     if (this.data.MenuList && this.data.MenuList.length > 0) {
       if (this.menutitle && this.menutitle !== '仪表盘') {
-        for (let i = 0; i < this.data.MenuList.length;i++) {
-          if (this.menutitle === this.data.MenuList[i].title && this.data.MenuList[i].children && this.data.MenuList[i].children.length > 0) {
-            this.UPDATE_STATE_ASYN({childrenMenu:this.data.MenuList[i].children})
+        for (let value of this.data.MenuList) {
+          if (this.menutitle === value.title && value.children && value.children.length > 0) {
+            this.UPDATE_STATE_ASYN({childrenMenu: value.children})
             this.parent.setnavigation(true);
             break;
           }
         }
       } else {
-        this.UPDATE_STATE_ASYN({menutitle:this.data.MenuList[0].title})
+        this.UPDATE_STATE_ASYN({menutitle: this.data.MenuList[0].title})
         this.parent.setnavigation(false)
       }
     }
@@ -86,10 +88,11 @@ export default class qwMenu extends Vue {
   // 设置导航
   binmenu(title, childrenMenu) {
     // this.data.title = title;
-    this.UPDATE_STATE_ASYN({menutitle:title,childrenMenu:childrenMenu})
+    this.UPDATE_STATE_ASYN({menutitle: title, childrenMenu})
     if (childrenMenu && childrenMenu.length > 0) {
       this.data.childrenMenu = childrenMenu;
       this.parent.setnavigation(true)
+      // this["$router"].push({ path: `${childrenMenu[0].path}` })
       this.$router.push({ path: `${childrenMenu[0].path}` })
     } else {
       this.data.childrenMenu = childrenMenu
