@@ -50,8 +50,8 @@ export default class PayMethod extends Vue {
 
   // 初始化函数
   initChart() {
-    //数据纯属虚构
-    var data = [
+    // 数据纯属虚构
+    let data = [
       {
         name: "北京",
         value: 5.3
@@ -190,33 +190,31 @@ export default class PayMethod extends Vue {
       }
     ];
 
-    var yData = [];
-    data.sort(function(o1, o2) {
-      if (isNaN(o1.value) || o1.value == null) return -1;
-      if (isNaN(o2.value) || o2.value == null) return 1;
+    let yData: any = [];
+    data.sort((o1, o2) => {
+      if (isNaN(o1.value) || o1.value == null) {
+        return -1;
+      }
+      if (isNaN(o2.value) || o2.value == null) {
+        return 1;
+      }
       return o1.value - o2.value;
     });
-    for (var i = 0; i < data.length; i++) {
-      yData.push(data[i].name);
+
+    for (let value of data) {
+      yData.push(value);
     }
     // console.log(echarts)
-    var payMethod = echarts.init(this.$refs.payMethod);
+    let payMethod = echarts.init(this.$refs.payMethod);
     let op = {
       tooltip: {
         show: true,
         backgroundColor: "rgba(255, 255, 255, 1)",
         padding: 10,
-        formatter: function(params) {
-          var html = "";
-          html +=
-            '<span class="block1"></span><span class="tip-txt">分布地区: ' +
-            params.name +
-            "</span><br>";
-          html +=
-            '<span class="block2"></span><span class="tip-txt">地区占比: ' +
-            params.data["value"] +
-            "%" +
-            "</span><br>";
+        formatter: (params) => {
+          let key = "value";
+          let html = `<span class="block1"></span><span class="tip-txt">分布地区:${params.name}</span><br>
+          <span class="block2"></span><span class="tip-txt">地区占比: ${params.data[key]}%</span><br>`;
           return html;
         }
       },
@@ -268,12 +266,12 @@ export default class PayMethod extends Vue {
           label: {
             show: false
           },
-          data: data
+          data 
         }
       ]
     }
     payMethod.setOption(op);
-    window.addEventListener("resize", function() {
+    window.addEventListener("resize", () => {
       payMethod.resize();
     });
   }

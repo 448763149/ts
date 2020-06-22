@@ -40,7 +40,7 @@ export default class PayRate extends Vue {
 
   // 初始化函数
   init() {
-    var payRate = echarts.init(this.$refs.payRate);
+    let payRate = echarts.init(this.$refs.payRate);
     payRate.setOption({
       color: ["#5B8FF9", "#5AD8A6", "#8B9DBE"],
       legend: {
@@ -87,7 +87,7 @@ export default class PayRate extends Vue {
         }
       ]
     });
-    window.addEventListener("resize", function() {
+    window.addEventListener("resize", () => {
       payRate.resize();
     });
   }

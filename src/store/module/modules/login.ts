@@ -4,12 +4,18 @@ import { GetterTree, MutationTree, ActionTree } from 'vuex'
 
 const state: LoginState = {
   info: '',
-  token: ''
+  token: '',
+  // 当前选中的一级导航名称
+  menutitle: '',
+  // 二级导航
+  childrenMenu: ''
 }
 
 // 强制使用getter获取state
 const getters: GetterTree<LoginState, any> = {
-  info: (state: LoginState) => state.info
+  info: (state: LoginState) => state.info,
+  menutitle: (state: LoginState) => state.menutitle,
+  childrenMenu: (state: LoginState) => state.childrenMenu
 }
 
 // 更改state

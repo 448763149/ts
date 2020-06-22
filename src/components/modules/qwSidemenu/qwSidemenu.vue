@@ -38,12 +38,16 @@
     // data
     data: QwSidemenuData = {
       componentName: 'qwSidemenu',
-      childtitle: this.childrenMenu.legngth > 0 ? this.childrenMenu[0].title : ''
+      childtitle: this.childrenMenu ? this.childrenMenu[0].title : ''
     }
 
     created() {
       //
       // console.log(this.title)
+      // debugger
+      // if (this.childrenMenu) {
+      //   this.data.childtitle = this.childrenMenu[0].title
+      // }
       // console.log(this.childrenMenu)
     }
     

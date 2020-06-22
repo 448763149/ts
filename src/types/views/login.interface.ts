@@ -9,6 +9,8 @@ export interface LoginData {
 export interface LoginState {
   info?: any
   token: string
+  menutitle: string
+  childrenMenu: any
 }
 
 // GET_DATA_ASYN 接口参数类型

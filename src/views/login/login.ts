@@ -78,7 +78,7 @@ export default class About extends Vue {
     let ref: any = this.$refs[name];
     console.log(_this)
     ref.validate(valid => {
-      console.log(valid)
+      // console.log(valid)
       console.log(_this.data.loginData.userName)
       let data: any = {
         userName: _this.data.loginData.userName,

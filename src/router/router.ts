@@ -4,10 +4,14 @@
  * @param {boolean} keepAlive 是否缓存页面
  * @param {string} title 页面标题
  */
-export default [
+import commodity from './modules/commodity' // 商品管理
+import renovation from './modules/renovation' // 装修系统
+import BasicLayout from '@/views/mian.vue'
+console.log(renovation)
+const frameIn = [
   {
     path: '/',
-    redirect: '/admin/index'
+    redirect: '/index'
   },
   {
     path: '/login',
@@ -20,9 +24,9 @@ export default [
     }
   },
   {
-    path: '/admin',
+    path: '/',
     name: 'admin',
-    component: () => import('@/views/mian.vue'),
+    component: BasicLayout,
     meta: {
       icon: '',
       keepAlive: true,
@@ -40,5 +44,8 @@ export default [
         }
       }
     ]
-  }
+  },
+  commodity,
+  renovation,
 ]
+export default [...frameIn]

@@ -6,7 +6,7 @@ import modules from "@/components" // 组件
 
 @Component({
   components: {
-    Navigation: modules.Navigation
+    qwMenu: modules.qwMenu
   }
 })
 export default class About extends Vue {
@@ -52,7 +52,7 @@ export default class About extends Vue {
        localStorage.clear();
        _this.reload.reload();
        // tslint:disable-next-line: no-unused-expression
-       _this.UPDATE_STATE_ASYN({info: ''})
+       _this.UPDATE_STATE_ASYN({info: '', menutitle: ''})
        this.$router.push({path: '/login'})
     }
   }

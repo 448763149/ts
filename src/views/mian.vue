@@ -1,35 +1,32 @@
 <template>
   <div class="index-wrap page-index">
     <div class="qw-layout">
-      <div class="qw-layout-sider" :style="{width:data.navigationswitch ? '220px':'110px'}">
-        <Navigation></Navigation>
-      </div>
-      <div class="qw-layout-inside" :style="{paddingLeft:data.navigationswitch ? '220px':'110px'}">
-        <div :class="data.navigationswitch ? 'qw-disflex clearfix': 'qw-disflex qw-navigation clearfix'" >
-           <div class="qw-header-right">
-             <div class="qw-header-trigger ">
-                <Dropdown trigger="click" @on-click="handleClick">
-                  <a href="javascript:void(0)">
-                    <!-- <Icon type="ios-person-outline" size="24" /> -->
-                    <!-- <img class="qw-portrait" :src="info.avatar" /> -->
-                    <img class="qw-portrait" src="../assets/images/img.jpg" />
-                    {{info.name}}
-                  </a>
-                  <DropdownMenu slot="list">
-                    <DropdownItem name="Logout">退出登录</DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
-             </div>
-           </div>
+      <!-- <transition name="fade-quick"></transition> -->
+        <div class="qw-layout-sider" :style="{width:data.navigationswitch ? '220px':'110px'}">
+          <qw-menu></qw-menu>
         </div>
-        <div class="qw-layout-content">
-          <router-view></router-view>
+        <div class="qw-layout-inside" :style="{paddingLeft:data.navigationswitch ? '220px':'110px'}">
+          <div :class="data.navigationswitch ? 'qw-disflex clearfix': 'qw-disflex qw-navigation clearfix'" >
+            <div class="qw-header-right">
+              <div class="qw-header-trigger ">
+                  <Dropdown trigger="click" @on-click="handleClick">
+                    <a href="javascript:void(0)">
+                      <!-- <Icon type="ios-person-outline" size="24" /> -->
+                      <!-- <img class="qw-portrait" :src="info.avatar" /> -->
+                      <img class="qw-portrait" src="../assets/images/img.jpg" />
+                      {{info.name}}
+                    </a>
+                    <DropdownMenu slot="list">
+                      <DropdownItem name="Logout">退出登录</DropdownItem>
+                    </DropdownMenu>
+                  </Dropdown>
+              </div>
+            </div>
+          </div>
+          <div class="qw-layout-content">
+            <router-view></router-view>
+          </div>
         </div>
-      </div>
-      
-      
-      
-     
     </div>
   </div>
 </template>

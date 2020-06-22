@@ -40,7 +40,7 @@ export default class SalesRank extends Vue {
 
   // 初始化函数
   init() {
-    var salesRank = echarts.init(this.$refs.salesRank);
+    let salesRank = echarts.init(this.$refs.salesRank);
     salesRank.setOption({
       grid: {
         // containLabel: true
@@ -122,16 +122,16 @@ export default class SalesRank extends Vue {
             normal: {
               show: true,
               position: "insideLeft",
-              formatter: function(params) {
+              formatter: (params) => {
                 return params.data.name;
               }
             }
           },
           itemStyle: {
             normal: {
-              color: function(params) {
-                var colorList = ["#5B8FF9", "#83D0EF"];
-                if (params.dataIndex % 2 == 0) {
+              color: (params) => {
+                let colorList = ["#5B8FF9", "#83D0EF"];
+                if (params.dataIndex % 2 === 0) {
                   return colorList[0];
                 } else {
                   return colorList[1];
@@ -169,7 +169,7 @@ export default class SalesRank extends Vue {
         }
       ]
     });
-    window.addEventListener("resize", function() {
+    window.addEventListener("resize", () => {
       salesRank.resize();
     });
   }

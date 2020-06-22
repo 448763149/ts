@@ -14,7 +14,9 @@ export default new Vuex.Store({
         admin: {
           login: {
             token: state.admin.login.token,
-            info: state.admin.login.info
+            info: state.admin.login.info,
+            menutitle: state.admin.login.menutitle,
+            childrenMenu: state.admin.login.childrenMenu,
           },
           index: {
             token: state.admin.index.author,
