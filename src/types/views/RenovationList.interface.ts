@@ -1,6 +1,6 @@
 // RenovationList.Data 参数类型
 export interface RenovationListData {
-  pageName: string
+  page: any
 }
 
 // VUEX RenovationList.State 参数类型

@@ -3,3 +3,33 @@
 .RenovationList-wrap {
   width: 100%;
 }
+
+.hq-content{
+  width: 400px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+
+/* 页面整体配置 */
+.page-title{
+  background-color: #fff;
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 44px;
+}
+
+.m-form{
+  margin-bottom: 15px;
+  .form-label{
+    width: 100px;
+    margin-right: 5px;
+  }
+  .m-colorselection{
+    margin-top: 10px;
+    margin-left: 105px;
+  }
+}

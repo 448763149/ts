@@ -13,7 +13,16 @@ export default class About extends Vue {
 
   // data
   data: RenovationListData = {
-    pageName: 'RenovationList'
+    page: {
+      // 页面title
+      title: '首页',
+      // 设置页面颜色
+      setbg: '1',
+      // 背景颜色
+      bgColor: '#ffffff',
+      // 页面描述
+      describe: ''
+    }
   }
 
   created() {
@@ -32,5 +41,6 @@ export default class About extends Vue {
   init() {
     //
   }
+  
     
 }

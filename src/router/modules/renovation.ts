@@ -4,7 +4,7 @@ export default {
   path: '/renovation',
   name: 'renovation',
   redirect: {
-    name: 'admin'
+    name: 'renovation'
   },
   component: BasicLayout,
   meta: {

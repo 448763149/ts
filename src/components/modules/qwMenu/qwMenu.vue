@@ -31,7 +31,7 @@
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { Getter, Action } from "vuex-class";
 import qwSidemenu from "../qwSidemenu/qwSidemenu.vue"; // 组件
-import { NavigationData } from "@/types/components/qwMenu.interface.ts";
+import { QwMenuData } from "@/types/components/qwMenu.interface";
 @Component({
   components: {
     QwSidemenu: qwSidemenu
@@ -51,7 +51,7 @@ export default class QwMenu extends Vue {
   })name!: string;
   
   // data
-  data: NavigationData = {
+  data: QwMenuData = {
     componentName: "Navigation",
     MenuList: [],
     title: '',
