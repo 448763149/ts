@@ -1,0 +1,62 @@
+<template>
+  <div class="hq-search-box">
+    <div class="hq-search-bg">
+      <van-field left-icon="search" placeholder="请输入用户名" />
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { Component, Vue, Prop, Watch } from "vue-property-decorator";
+import { Getter, Action } from "vuex-class";
+import { SearchData } from "@/types/components/build/Search.interface";
+import { Field, Icon} from 'vant';
+@Component({
+   components: {
+    [Field.name]: Field,
+    [Icon.name]: Icon,
+  }
+})
+export default class Search extends Vue {
+  name!: string;
+  // @Prop({
+  //   type: Array,
+  //   default() {
+  //     return [];
+  //   }
+  // })
+  // public Dayslist;
+  // Watch
+  // @Watch("Dayslist")
+  // public handler(newval: any, old: any) {
+  //   this.init();
+  // }
+  // data
+  data: SearchData = {
+    componentName: "Search",
+  };
+
+  created() {
+    //
+  }
+
+  activated() {
+    //
+  }
+
+  mounted() {
+   
+  }
+
+  
+}
+</script>
+
+<style lang="scss">
+@import "@/assets/scss/variables.scss";
+
+.Banner-wrap {
+  width: 100%;
+}
+</style>
+
