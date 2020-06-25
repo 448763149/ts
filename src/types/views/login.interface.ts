@@ -11,6 +11,7 @@ export interface LoginState {
   token: string
   menutitle: string
   childrenMenu: any
+  UrlLink: string
 }
 
 // GET_DATA_ASYN 接口参数类型

@@ -7,7 +7,7 @@
     "url": "https://github.com/chenfangsheng/vue-cli3-tpl.git"
   },
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e",
@@ -22,11 +22,13 @@
     "js-cookie": "^2.2.0",
     "mockjs": "^1.1.0",
     "qs": "^6.9.4",
+    "vant": "^2.8.7",
     "view-design": "^4.2.0",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1",
+    "vuedraggable": "^2.23.2",
     "vuex": "^3.0.1",
     "vuex-class": "^0.3.1",
     "vuex-persistedstate": "^3.0.1"

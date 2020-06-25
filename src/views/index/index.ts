@@ -14,7 +14,7 @@ import { getDays } from '@/utils/common'
 })
 export default class About extends Vue {
   // Getter
-  @Getter('admin/index/author') author
+  // @Getter('admin/index/author') author
 
   // Action
   // @Action('admin/index/GET_DATA_ASYN') GET_DATA_ASYN

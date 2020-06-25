@@ -5,7 +5,7 @@
         {{title || ''}}
       </div>
       <div class="qw-menu-light">
-        <div @click="childnav(item.title,item)" v-for="(item,index) in childrenMenu" :key="index">
+        <div @click="childnav(item.title,item.path)" v-for="(item,index) in childrenMenu" :key="index">
           <router-link :class="data.childtitle === item.title?'active':''" :to="item.path" >
            {{item.title}}
           </router-link>
@@ -35,6 +35,7 @@
         this.data.childtitle = newval[0].title
       }
     }
+    @Action('admin/login/UPDATE_STATE_ASYN') UPDATE_STATE_ASYN
     // data
     data: QwSidemenuData = {
       componentName: 'qwSidemenu',
@@ -42,13 +43,7 @@
     }
 
     created() {
-      //
-      // console.log(this.title)
-      // debugger
-      // if (this.childrenMenu) {
-      //   this.data.childtitle = this.childrenMenu[0].title
-      // }
-      // console.log(this.childrenMenu)
+     //
     }
     
     activated() {
@@ -59,7 +54,9 @@
       //
     }
     // 子导航选中
-    childnav(activetitle, inkk) {
+    childnav(activetitle, UrlLink) {
+      // 点击页面存储当前路由地址做回选用
+      this.UPDATE_STATE_ASYN({UrlLink})
       this.data.childtitle = activetitle;
     }
 

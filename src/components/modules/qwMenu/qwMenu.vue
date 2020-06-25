@@ -43,6 +43,7 @@ export default class QwMenu extends Vue {
   @Getter("admin/login/info") info;
   @Getter("admin/login/childrenMenu") childrenMenu;
   @Getter("admin/login/menutitle") menutitle;
+  @Getter("admin/login/UrlLink") UrlLink;
   @Action('admin/login/UPDATE_STATE_ASYN') UPDATE_STATE_ASYN
   // prop
   @Prop({
@@ -71,31 +72,40 @@ export default class QwMenu extends Vue {
     // 初始化导航设置
     this.data.MenuList = this.info.userMenuList;
     if (this.data.MenuList && this.data.MenuList.length > 0) {
+      // 判断下之后是否有选中的导航如果有直接回选
       if (this.menutitle && this.menutitle !== '仪表盘') {
         for (let value of this.data.MenuList) {
           if (this.menutitle === value.title && value.children && value.children.length > 0) {
             this.UPDATE_STATE_ASYN({childrenMenu: value.children})
+            // 如果有缓存地址就跳转回之前缓存的地址
+            if (this.UrlLink) {
+              this.$router.push({ path: `${this.UrlLink}` })
+            }
             this.parent.setnavigation(true);
             break;
           }
         }
       } else {
+        // 存储一下当前默认选中
         this.UPDATE_STATE_ASYN({menutitle: this.data.MenuList[0].title})
+        // 调用父级方法设置当前是否是二级导航
         this.parent.setnavigation(false)
       }
     }
   }
   // 设置导航
   binmenu(title, childrenMenu) {
-    // this.data.title = title;
     this.UPDATE_STATE_ASYN({menutitle: title, childrenMenu})
     if (childrenMenu && childrenMenu.length > 0) {
       this.data.childrenMenu = childrenMenu;
+      // 调用父级方法设置当前是否是二级导航
       this.parent.setnavigation(true)
-      // this["$router"].push({ path: `${childrenMenu[0].path}` })
+      // 跳转之前记录下当前跳转的路由
+      this.UPDATE_STATE_ASYN({UrlLink: childrenMenu[0].path})
       this.$router.push({ path: `${childrenMenu[0].path}` })
     } else {
-      this.data.childrenMenu = childrenMenu
+      this.data.childrenMenu = childrenMenu;
+      // 调用父级方法设置当前是否是二级导航
       this.parent.setnavigation(false)
     }
     

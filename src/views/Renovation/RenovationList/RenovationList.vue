@@ -6,9 +6,30 @@
           <span>搭建</span>
         </div>
         <div class="zent-design-preview-item">
+          <!--页面标题-->
           <div class="hq-design-component-config-preview">
             <div class="page-title">{{data.page.title}}</div>
-          </div>
+          </div><!--页面标题 end-->
+          <!--拖动组件-->
+          <draggable class="hq-draggable"
+          v-model="data.listdata" 
+          :options="{group:'people',fallbackClass: 'sortable-fallback',animation:150,ghostClass:'sortable-ghost',chosenClass:'chosenClass',scroll:true,scrollSensitivity:200}">
+              <template v-for="(item,index) in data.listdata">
+                <!--搜索框-->
+                <div :data-id="item.id" :class="item.checked?'hq_search hq-itme active':'hq_search hq-itme'"  @click="binscelect(item.id)" v-if="item.name === 'Search'" :key="index">
+                  <van-icon @click="close(item.id)" class="hq-close" name="close" />
+                  <component :is="item.name"></component>
+                </div>
+                <!--搜索框 end-->
+                <template v-else>
+                  <div :data-id="item.id" :class="item.checked?' hq-itme active':'hq-itme'"  @click="binscelect(item.id)" :key="index">
+                    <van-icon @click="close(item.id)" class="hq-close" name="close" />
+                    <component :is="item.name"></component>
+                  </div>
+                </template>
+              </template>
+          </draggable><!--拖动组件 end-->
+
         </div>
       </div>
     </div>
@@ -44,5 +65,6 @@
 
 <style lang="scss" scope>
   @import './RenovationList.scss';
+
 </style>
 

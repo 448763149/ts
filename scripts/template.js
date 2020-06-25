@@ -96,9 +96,10 @@ export interface ${capPirName}State {
 `
 
 // vuex 模版
+// 不引用api模块
+// import * as ${capPirName}Api from '@/api/${dirName}'
 const vuexTep = `import { ${capPirName}State } from '@/types/views/${dirName}.interface'
 import { GetterTree, MutationTree, ActionTree } from 'vuex'
-import * as ${capPirName}Api from '@/api/${dirName}'
 
 const state: ${capPirName}State = {
   author: ''
@@ -130,6 +131,7 @@ const actions: ActionTree<${capPirName}State, any> = {
 }
 
 export default {
+  namespaced: true,
   state,
   getters,
   mutations,
@@ -157,10 +159,11 @@ fs.writeFileSync(`${dirName}.scss`, scssTep) // scss
 process.chdir(`${basePath}/types/views`); // cd types
 fs.writeFileSync(`${dirName}.interface.ts`, interfaceTep) // interface
 
-process.chdir(`${basePath}/store/module`); // cd store
+process.chdir(`${basePath}/store/module/modules`); // cd store
 fs.writeFileSync(`${dirName}.ts`, vuexTep) // vuex
 
-process.chdir(`${basePath}/api`); // cd api
-fs.writeFileSync(`${dirName}.ts`, apiTep) // api
+// 不组装api页面
+// process.chdir(`${basePath}/api`); // cd api
+// fs.writeFileSync(`${dirName}.ts`, apiTep) // api
 
 process.exit(0)
