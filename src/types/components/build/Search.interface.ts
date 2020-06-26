@@ -1,6 +1,5 @@
 // PayMethod.Data 参数类型
-export interface BannerData {
+export interface SearchData {
   componentName: string
-  images: any
 }
 

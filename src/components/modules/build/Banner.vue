@@ -1,11 +1,9 @@
 <template>
-  <div class="Banner-wrap">
-    <van-swipe :autoplay="3000">
-      <van-swipe-item v-for="(image, index) in data.images" :key="index">
-        <img v-lazy="image" />
-      </van-swipe-item>
-    </van-swipe>
-  </div>
+  <van-swipe :autoplay="3000">
+    <van-swipe-item v-for="(image, index) in data.images" :key="index">
+      <img v-lazy="image" />
+    </van-swipe-item>
+  </van-swipe>
 </template>
 
 <script lang="ts">
@@ -22,12 +20,9 @@ Vue.use(Lazyload);
 })
 export default class Banner extends Vue {
   name!: string;
-  // @Prop({
-  //   type: Array,
-  //   default() {
-  //     return [];
-  //   }
-  // })
+  @Prop()
+  public configdata!: any;
+  
   // public Dayslist;
   // Watch
   // @Watch("Dayslist")
@@ -52,14 +47,14 @@ export default class Banner extends Vue {
   }
 
   mounted() {
-   
+   //
   }
 
   
 }
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 @import "@/assets/scss/variables.scss";
 
 img{

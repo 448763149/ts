@@ -1,7 +1,9 @@
 <template>
-  <div class="hq-search-box">
-    <div class="hq-search-bg">
-      <van-field left-icon="search" placeholder="请输入用户名" />
+   <div class="hq_search">
+    <div class="hq-search-box">
+      <div class="hq-search-bg">
+        <van-field left-icon="search" placeholder="请输入用户名" />
+      </div>
     </div>
   </div>
 </template>
@@ -18,13 +20,9 @@ import { Field, Icon} from 'vant';
   }
 })
 export default class Search extends Vue {
-  name!: string;
-  // @Prop({
-  //   type: Array,
-  //   default() {
-  //     return [];
-  //   }
-  // })
+  name: string = 'Search';
+  @Prop()
+  public configdata!: any;
   // public Dayslist;
   // Watch
   // @Watch("Dayslist")
@@ -38,6 +36,8 @@ export default class Search extends Vue {
 
   created() {
     //
+    console.log(this.name)
+    console.log(this.configdata)
   }
 
   activated() {
@@ -45,14 +45,14 @@ export default class Search extends Vue {
   }
 
   mounted() {
-   
+   //
   }
 
   
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/scss/variables.scss";
 
 .Banner-wrap {

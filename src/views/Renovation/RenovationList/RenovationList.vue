@@ -15,18 +15,11 @@
           v-model="data.listdata" 
           :options="{group:'people',fallbackClass: 'sortable-fallback',animation:150,ghostClass:'sortable-ghost',chosenClass:'chosenClass',scroll:true,scrollSensitivity:200}">
               <template v-for="(item,index) in data.listdata">
-                <!--搜索框-->
-                <div :data-id="item.id" :class="item.checked?'hq_search hq-itme active':'hq_search hq-itme'"  @click="binscelect(item.id)" v-if="item.name === 'Search'" :key="index">
-                  <van-icon @click="close(item.id)" class="hq-close" name="close" />
-                  <component :is="item.name"></component>
+                <div :data-id="item.id" :class="item.checked?' hq-itme active':'hq-itme'"  @click="binscelect(item.id)" :key="index">
+                  <van-icon @click="close(configdata.id)" class="hq-close" name="close" />
+                  <!-- <component :is="item.name" :configdata="item" ></component> -->
+                   <async-load-comp :app="item.name" :configdata="item" />
                 </div>
-                <!--搜索框 end-->
-                <template v-else>
-                  <div :data-id="item.id" :class="item.checked?' hq-itme active':'hq-itme'"  @click="binscelect(item.id)" :key="index">
-                    <van-icon @click="close(item.id)" class="hq-close" name="close" />
-                    <component :is="item.name"></component>
-                  </div>
-                </template>
               </template>
           </draggable><!--拖动组件 end-->
 
@@ -63,8 +56,7 @@
 
 <script lang="ts" src="./RenovationList.ts"></script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
   @import './RenovationList.scss';
-
 </style>
 

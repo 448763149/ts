@@ -7,7 +7,7 @@
 import commodity from './modules/commodity' // 商品管理
 import renovation from './modules/renovation' // 装修系统
 import BasicLayout from '@/views/mian.vue'
-console.log(renovation)
+// console.log(renovation)
 const frameIn = [
   {
     path: '/',

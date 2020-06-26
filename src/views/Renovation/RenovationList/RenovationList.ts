@@ -12,11 +12,10 @@ import draggable from 'vuedraggable'
   components: {
     [Icon.name]: Icon,
     draggable,
-    Banner: modules.Banner,
-    Search: modules.Search,
+    asyncLoadComp: modules.asyncLoadComp,
   }
 })
-export default class About extends Vue {
+export default class RenovationList extends Vue {
   // Getter
   // @Getter author
   
@@ -93,6 +92,4 @@ export default class About extends Vue {
       }
     }
   }
-
-    
 }
