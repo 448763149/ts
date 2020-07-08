@@ -12,7 +12,7 @@ import draggable from 'vuedraggable'
   components: {
     [Icon.name]: Icon,
     draggable,
-    asyncLoadComp: modules.asyncLoadComp,
+    asyncLoadComp: modules.AsyncLoadComp,
   }
 })
 export default class RenovationList extends Vue {
