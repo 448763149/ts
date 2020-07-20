@@ -1,6 +1,12 @@
 // ProductList.Data 参数类型
 export interface ProductListData {
-  pageName: string
+  height: any;
+  width: any;
+  y: any;
+  x: any;
+  pageName: string,
+  vLine: any,
+  hLine: any[]
 }
 
 // VUEX ProductList.State 参数类型

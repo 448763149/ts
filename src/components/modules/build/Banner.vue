@@ -21,7 +21,7 @@ Vue.use(Lazyload);
 export default class Banner extends Vue {
   name!: string;
   @Prop()
-  public configdata!: any;
+  public configdata?: any;
   
   // public Dayslist;
   // Watch

@@ -1,16 +1,15 @@
 /*
  * @Description: 公共函数
- * @Author: asheng
- * @Date: 2018-12-07 11:36:27
- * @LastEditors: asheng
- * @LastEditTime: 2018-12-12 15:22:04
+ * @Author: huqiang
+ * @Date: 2020-7-04 11:36:27
+ * 
  */
 
 import Cookies from 'js-cookie'
 import { cookieExpires } from '@/config' // cookie保存的天数
 
 /**
- * @Author: asheng
+ * @Author: huqiang
  * @msg: 存取token
  * @param {string} token
  */
@@ -25,6 +24,20 @@ export const getToken = () => {
   } else {
     return false
   }
+}
+
+/**
+ * @name: 根据组件列表数组动态注册组件
+ * @param {Array} componentsList  组件名数组
+ * @return {Object} 动态注册的组件名及对应引入的组件文件，可直接用于Vue中的components属性中
+ */
+export const dynamicComponents = (componentsList: any) => {
+  let components = {};
+  componentsList.map(item => {
+    // 动态注册组件
+    components[item] = () => import(`@/components/modules/common/${item}/index`);
+  });
+  return components;
 }
 
 /**
@@ -245,5 +258,48 @@ export function objClone(jsonObj: any) {
     return buf
   } else {
     return jsonObj
+  }
+}
+
+
+
+/**
+ * @name: 根据传入的值设置vuex
+ * @param  page  装修页面组件数组设置组件
+ * @param  componentsid  页面组件的uuid
+ * @param  uuid  页面组件组件配置项的uuid
+ * @param  UPDATE_STATE_ASYN  修改vuex 方法
+ */
+
+export const setup = (page: any, value: any, componentsid: string, uuid: string, UPDATE_STATE_ASYN: any) => {
+  if (page) {
+    for (let item of page.components) {
+      if (item.uuid === componentsid) {
+        for (let fig of item.config) {
+           if (fig.uuid === uuid) {
+            fig.data.value = value;
+            break;
+           }
+        }
+        break;
+      }
+    }
+    UPDATE_STATE_ASYN({page})
+  }
+
+}
+
+export const calculation = (page: any, configdata: any, uuid: string) =>  {
+  if (page) {
+    for (let item of page.components) {
+      if (item.uuid === configdata.uuid) {
+        for (let fig of item.config) {
+          if (fig.uuid === uuid) {
+            return fig.data.value;
+          }
+        }
+        break;
+      }
+    }
   }
 }

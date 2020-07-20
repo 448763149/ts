@@ -13,49 +13,30 @@ import draggable from 'vuedraggable'
     [Icon.name]: Icon,
     draggable,
     asyncLoadComp: modules.AsyncLoadComp,
+    DiyForm: modules.DiyForm,
+    CopyRight: modules.CopyRight,
   }
 })
 export default class RenovationList extends Vue {
   // Getter
-  // @Getter author
+  @Getter("admin/buildsystem/page") page
   
   // Action
-  // @Action GET_DATA_ASYN
+  @Action('admin/buildsystem/UPDATE_STATE_ASYN') UPDATE_STATE_ASYN
 
   // data
   data: RenovationListData = {
-    page: {
-      // 页面title
-      title: '首页',
-      // 设置页面颜色
-      setbg: '1',
-      // 背景颜色
-      bgColor: '#ffffff',
-      // 页面描述
-      describe: '',
-    },
-    // 展示用
-    listdata: [
-      {
-        id: 1,
-        name: 'Search',
-        checked: true
-      },
-      {
-        id: 2,
-        name: 'Banner',
-        checked: false
-      },
-      {
-        id: 3,
-        name: 'Search',
-        checked: false
-      }
-    ]
+    // 当前选择的组件配置
+    componentconfig: {},
+    name: '',
+    // 页面配置
+    ispage: true,
   }
 
   created() {
-    //
+    // 导入页面配置
+    let Config = require('@/config/buildConfig').default;
+    this.UPDATE_STATE_ASYN({page: Config.page})
   }
   
   activated() {
@@ -70,24 +51,45 @@ export default class RenovationList extends Vue {
   init() {
     //
   }
+
+  // 背景颜色设置
+  bgRadio(e) {
+    // 默认背景颜色
+    if (e === '1') {
+      this.page.bgColor = '#ffffff';
+      this.UPDATE_STATE_ASYN({page: this.page})
+    }
+  }
+
   // 点击设置选中效果
-  binscelect(id) {
-    if (this.data.listdata && this.data.listdata.length > 0) {
-      for (let value of this.data.listdata) {
-        if (value.id === id) {
-          value.checked = true;
-        } else {
-          value.checked = false;
+  binscelect(uuid?: any, config?: any, name?: any) {
+    if (uuid) {
+      this.data.ispage = false;
+      // 设置当前配置项
+      this.data.componentconfig = config;
+      this.data.name = name;
+      if (this.page.components && this.page.components.length > 0) {
+        for (let value of this.page.components) {
+          if (value.uuid === uuid) {
+            value.checked = true;
+          } else {
+            value.checked = false;
+          }
         }
+        this.UPDATE_STATE_ASYN({page: this.page})
       }
+    } else {
+      this.data.ispage = true;
     }
   }
 
   // 删除事件
-  close(id) {
-    for (let i = 0; i < this.data.listdata.length; i++) {
-      if (this.data.listdata[i].id === id) {
-        this.data.listdata.splice(i, 1); 
+  close(uuid) {
+    for (let i = 0; i < this.page.components.length; i++) {
+      if (this.page.components[i].uuid === uuid) {
+        this.page.components.splice(i, 1); 
+        console.log(this.page.components)
+        this.UPDATE_STATE_ASYN({page: this.page})
         break
       }
     }

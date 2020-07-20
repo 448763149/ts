@@ -31,7 +31,7 @@
     "no-bitwise": true, //不允许使用按位运算符
     "no-console": false, //不能使用console
     "no-construct": true, //不允许使用 String/Number/Boolean的构造函数
-    "no-debugger": true, //不允许使用debugger
+    "no-debugger": false, //不允许使用debugger
     "no-duplicate-super": true, //构造函数两次用super会发出警告
     "no-empty": true, //不允许空的块
     "no-eval": true, //不允许使用eval
@@ -44,7 +44,7 @@
     "no-misused-new": true, //禁止定义构造函数或new class
     "no-null-keyword": false, //不允许使用null关键字
     "no-object-literal-type-assertion": false, //禁止object出现在类型断言表达式中
-    "no-return-await": true, //不允许return await
+    "no-return-await": false, //不允许return await
     "arrow-parens": false, //箭头函数定义的参数需要括号
     "adjacent-overload-signatures": false, //  Enforces function overloads to be consecutive.
     "ban-comma-operator": true, //禁止逗号运算符。

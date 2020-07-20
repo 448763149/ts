@@ -2,12 +2,14 @@ import { RenovationListState } from '@/types/views/RenovationList.interface'
 import { GetterTree, MutationTree, ActionTree } from 'vuex'
 // 搭建系统存储
 const state: RenovationListState = {
-  author: ''
+  author: '',
+  page: ''
 }
 
 // 强制使用getter获取state
 const getters: GetterTree<RenovationListState, any> = {
-  author: (state: RenovationListState) => state.author
+  author: (state: RenovationListState) => state.author,
+  page: (state: RenovationListState) => state.page
 }
 
 // 更改state

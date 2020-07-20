@@ -13,15 +13,18 @@ export default {
         // 组件名称
         name: 'Search',
         // 组件id
-        id: 1,
+        uuid: 1,
+        checked: true,
+        settings: {},
         config: [
           {
             // 配置项组件名称 单选按钮组件
-            fileName: 'HQRadio',
+            fileName: 'HRadio',
             fileUrl: 'common',
+            uuid: '1',
             data: {
               label: '框体样式',
-              value: '',
+              value: '1',
               selectList: [
                 {
                   id: '1',
@@ -29,53 +32,73 @@ export default {
                 },
                 {
                   id: '2',
-                  label: '原型'
+                  label: '圆形'
                 }
               ]
             }
           },
           {
             // 配置项组件名称 调色板组件
-            fileName: 'HQColorPicker',
+            fileName: 'HColorPicker',
             fileUrl: 'common',
+            uuid: '2',
             data: {
               label: '背景颜色',
-              value: ''
+              value: '#ffffff'
             }
           },
           {
             // 配置项组件名称 调色板组件
-            fileName: 'HQColorPicker',
+            fileName: 'HColorPicker',
             fileUrl: 'common',
+            uuid: '3',
             data: {
               label: '框体颜色',
-              value: ''
+              value: '#ffffff'
             }
           },
           {
-            label: '文本位置',
-            value: '',
-            selectList: [
-              {
-                id: '1',
-                label: '居中'
-              },
-              {
-                id: '2',
-                label: '居左'
-              }
-            ]
+            fileName: 'HRadio',
+            fileUrl: 'common',
+            uuid: '4',
+            data: {
+              label: '文本位置',
+              value: '2',
+              selectList: [
+                {
+                  id: '1',
+                  label: '居中'
+                },
+                {
+                  id: '2',
+                  label: '居左'
+                }
+              ]
+            }
           },
           {
             // 配置项组件名称 调色板组件
-            fileName: 'HQColorPicker',
+            fileName: 'HColorPicker',
             fileUrl: 'common',
+            uuid: '5',
             data: {
               label: '文本颜色',
-              value: ''
+              value: '#333333'
             }
           }
         ]
+      },
+      {
+        uuid: 2,
+        name: 'Banner',
+        checked: false,
+        config: []
+      },
+      {
+        uuid: 3,
+        name: 'Search',
+        checked: false,
+        config: []
       }
     ]
   }

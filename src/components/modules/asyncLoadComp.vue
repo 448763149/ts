@@ -7,12 +7,16 @@
     @Prop()
     public app!: string;
     @Prop()
-    public configdata!: any;
+    public uuid?: string;
+    @Prop()
+    public configdata?: any;
     // render
     render(h, cxt) {
       return h(require(`@/components/modules/build/${this.app}.vue`).default, {
         props: {
-          configdata: this.configdata
+          configdata: this.configdata,
+          name: this.app,
+          uuid: this.uuid
         }
       })
     }
